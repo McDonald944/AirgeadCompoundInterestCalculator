@@ -1,0 +1,201 @@
+//--- File: main.pseudo ---
+
+// To start the program...
+INSTRUCTIONS:
+  1. Create a thing called "investment" (it's for storing investment info).
+  2. Create a thing called "userIOHandler" (it's for getting input from the user).
+  3. Create a thing called "mainMenu" (it's for showing the menu and running the program).
+  4. Tell "mainMenu" to start running.
+// That's the end of the program.
+
+//--- File: mainmenu.pseudo ---
+
+// We're defining how the "MainMenu" thing works.
+HOW TO DO "MainMenu"
+  // When you create a "MainMenu", it has:
+  // - A list called "investments" to remember all the investments.
+
+  // The "MainMenu" can do these things:
+
+  // To run the main menu:
+  INSTRUCTIONS FOR "run":
+    1. Make a number called "choice".
+    2. Make a "userIOHandler" thing.
+
+    // Keep doing this:
+    DO:
+      a. Show the main menu (using "displayMenu").
+      b. Ask the user for their choice and store it in "choice" (using "userIOHandler").
+
+      // Do different things based on the user's choice:
+      c. IF "choice" is 1:
+          - Create a new investment (using "createInvestment").
+        OTHERWISE IF "choice" is 2:
+          - Tell the user that option 2 isn't ready yet.
+        OTHERWISE IF "choice" is 0:
+          - Tell the user the program is ending.
+        OTHERWISE:
+          - Tell the user that the input was invalid.
+      d. Print an empty line (for spacing).
+    // ...while "choice" is not 0.
+  // End of "run" instructions.
+
+  // To display the main menu:
+  INSTRUCTIONS FOR "displayMenu":
+    1. Show the menu header.
+    2. Show the options for creating, viewing, and exiting.
+    3. Show a line to separate the menu.
+  // End of "displayMenu" instructions.
+
+  // To create a new investment:
+  INSTRUCTIONS FOR "createInvestment":
+    1. Make a "userIOHandler" thing.
+    2. Make variables to store the principal, interest rate, years, and monthly deposit.
+
+    3. Ask the user for each of these values (using "userIOHandler") and store them in the variables.
+
+    4. Create a new "Investment" thing with those values.
+
+    5. Show a message saying a new investment was created.
+    6. Set the way numbers are displayed to show two decimal places.
+    7. Show the principal, interest rate, years, and monthly deposit of the new investment.
+    8. Reset the way numbers are displayed.
+
+    9. Add the new investment to the list of investments.
+
+    10. Show the detailed investment calculations (using "displayInvestmentDetails").
+  // End of "createInvestment" instructions.
+
+  // To display the detailed investment information:
+  INSTRUCTIONS FOR "displayInvestmentDetails" (and you give it an "investment" thing):
+    1. Get the principal, interest rate, years, and monthly deposit from the "investment" thing.
+    2. Calculate the monthly interest rate.
+
+    3. Show a header for the yearly investment growth (without deposits).
+    4. Show column headers for year, start balance, interest gained, and end balance.
+    5. Show a line to separate the headers.
+
+    6. Start with the current balance equal to the principal.
+    7. For each year (starting from year 0):
+       a. Calculate the interest earned for that year.
+       b. Calculate the balance at the end of the year.
+       c. Show the year, start balance, interest earned, and end balance.
+       d. Update the current balance to be the end balance for the next year.
+    8. Print an empty line.
+
+    9. IF there's a monthly deposit (it's greater than 0):
+       a. Show a header for the yearly investment growth (with deposits).
+       b. Show column headers for year, start balance, annual deposit, interest gained, and end balance.
+       c. Show a line to separate the headers.
+
+       d. Start with the current balance equal to the principal.
+       e. For each year (starting from year 1):
+          i.  Calculate the total deposits for the year.
+          ii. Set the initial interest to 0.
+          iii. Remember the balance at the beginning of the year.
+
+          iv. For each month of the year:
+              - Add the monthly deposit to the current balance.
+              - Calculate the interest for that month and add it to the total interest.
+
+          v. Calculate the balance at the end of the year (including deposits and interest).
+          vi. Show the year, start balance, annual deposit, interest gained, and end balance.
+
+          vii. Update the current balance to be the end balance for the next year.
+       f. Print an empty line.
+
+       g. Show a header for comparing the growth with and without monthly deposits.
+       h. Show column headers for year, balance without deposits, and balance with deposits.
+       i. Show a line to separate the headers.
+
+       j. Start with the balance without deposits and the balance with deposits, both equal to the principal.
+       k. For each year (starting from year 1):
+          - Calculate the end-of-year balance WITHOUT monthly deposits.
+          - Calculate the end-of-year balance WITH monthly deposits.
+          - Show the year, balance without deposits, and balance with deposits.
+       l. Print an empty line.
+    ENDIF
+  // End of "displayInvestmentDetails" instructions.
+END HOW TO DO
+
+//--- File: investment.pseudo ---
+
+// We're defining how the "Investment" thing works.
+HOW TO DO "Investment"
+  // When you create an "Investment", it has:
+  // - A principal amount (the initial investment).
+  // - An annual interest rate.
+  // - A number of years for the investment.
+  // - A monthly deposit amount.
+
+  // It can be created in two ways:
+  // - With no starting values (everything is zero).
+  // - With starting values for principal, interest rate, years, and monthly deposit.
+
+  // It can also do these things:
+  // - Set (change) the principal, interest rate, years, and monthly deposit.
+  // - Get (find out) the principal, interest rate, years, and monthly deposit.
+END HOW TO
+
+//--- File: UserIOHandler.pseudo ---
+
+// We're defining how the "UserIOHandler" thing works.
+HOW TO DO "UserIOHandler"
+  // It can do these things:
+
+  // To get a number from the user (that can't be zero):
+  INSTRUCTIONS FOR "getNonZeroInteger" (and you give it a "prompt" message):
+    1. Make a variable called "value" to store the number.
+    2. Make a variable called "validInput" and set it to "false".
+
+    3. While "validInput" is "false":
+       a. Show the "prompt" message to the user.
+       b. Get a number from the user and store it in "value".
+
+       c. IF the input was a valid number AND "value" is greater than or equal to 0:
+          - Set "validInput" to "true".
+       OTHERWISE:
+          - Show an error message.
+          - Clear the input so we can get new input.
+          - Ignore any extra input the user typed.
+    4. Return the "value".
+  // End of "getNonZeroInteger" instructions.
+
+  // To get a number from the user (that has to be 1 or more):
+  INSTRUCTIONS FOR "getPositiveInteger" (and you give it a "prompt" message):
+    // (Same steps as "getNonZeroInteger", but check for >= 1 instead of >= 0)
+    1. Make a variable called "value".
+    2. Make a variable called "validInput" and set it to "false".
+
+    3. While "validInput" is "false":
+       a. Show the "prompt".
+       b. Get a number from the user and store it in "value".
+
+       c. IF the input was a valid number AND "value" is greater than or equal to 1:
+          - Set "validInput" to "true".
+       OTHERWISE:
+          - Show an error message.
+          - Clear the input.
+          - Ignore extra input.
+    4. Return the "value".
+  // End of "getPositiveInteger" instructions.
+
+   // To get a decimal number from the user (that can't be zero):
+  INSTRUCTIONS FOR "getNonZeroDouble" (and you give it a "prompt" message):
+    // (Same steps as "getNonZeroInteger")
+    1. Make a variable called "value".
+    2. Make a variable called "validInput" and set it to "false".
+
+    3. While "validInput" is "false":
+       a. Show the "prompt".
+       b. Get a number from the user and store it in "value".
+
+       c. IF the input was a valid number AND "value" is greater than or equal to 0:
+          - Set "validInput" to "true".
+       OTHERWISE:
+          - Show an error message.
+          - Clear the input.
+          - Ignore extra input.
+    4. Return the "value".
+  // End of "getNonZeroDouble" instructions.
+END HOW TO
