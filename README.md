@@ -1,6 +1,6 @@
 # AirgeadCompoundInterestCalculator (C++)
 
-[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen)](https://github.com/your-github-username/your-repo-name/actions)
+[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen)](https://github.com/mcdonald944/airgeadcompoundinterestcalculator/actions)
 [![Language](https://img.shields.io/badge/Language-C++-blue.svg)](https://isocpp.org/)
 
 ## Project Summary and Problem Solved
