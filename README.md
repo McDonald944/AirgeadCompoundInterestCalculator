@@ -21,8 +21,6 @@ This project addresses the need for a simple, terminal-based tool to understand 
 * **Abstraction and Modularity:** The calculation logic could be further abstracted into separate functions or classes. This would improve code organization, readability, and testability. For example, a dedicated `InvestmentCalculator` class could encapsulate the different calculation methods.
     * **Efficiency:** While the current calculations are efficient for typical investment periods, for extremely long durations, optimizing the loop structures or exploring mathematical formulas for direct calculation could be considered (though the current approach prioritizes clarity).
 * **Internationalization/Localization:** For broader usability, the application could be adapted to handle different currency formats and number conventions.
-* **Testing Framework:** Implementing a proper unit testing framework (e.g., Google Test) would significantly improve code reliability by allowing for automated testing of individual components and calculation logic.
-    * **Security:** In this specific application, security vulnerabilities are minimal as it's a local command-line tool with no external data interaction. However, the principles of secure coding (like careful input validation to prevent unexpected behavior) were applied. If the application were to handle external data or user accounts in the future, security would become a much higher priority.
 
 ## Most Challenging Code and How It Was Overcome
 
@@ -41,7 +39,6 @@ I overcame this by:
 
 * **C++ Documentation (cppreference.com):** A constant and invaluable resource for understanding language features and standard library components.
 * **Online Forums (Stack Overflow, Reddit):** Useful for researching specific issues and seeing how others have approached similar problems.
-* **Potential Addition: Google Test Documentation:** As I plan to implement unit testing, I'll be adding the Google Test documentation to my resources.
 
 ## Transferable Skills
 
