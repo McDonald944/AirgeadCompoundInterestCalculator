@@ -67,5 +67,3 @@ I aimed to make this program maintainable, readable, and adaptable through the f
 * **Modular Design (Future Improvement):** While not fully implemented, the structure allows for easier modularization in the future. For example, the calculation logic could be moved into separate functions or classes without significantly altering the input/output sections.
 
 ---
-
-Feel free to use and adapt this README for your GitHub repository! Remember to replace `your-github-username` and `your-repo-name` in the build status badge link with your actual information. You can also add more badges (e.g., for code style) as you develop further. Good luck! 
